@@ -3,6 +3,7 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+	"time"
 
 	"github.com/Jeffail/gabs"
 )
@@ -26,6 +27,17 @@ func New(source []byte) (*Config, error) {
 	return &Config{
 		container: parsed,
 	}, nil
+}
+
+// NewFromFile load config from json file
+func NewFromFile(filepath string) (*Config, error) {
+	data, err := ioutil.ReadFile(filepath)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return New(data)
 }
 
 // Reload reload config from source bytes
@@ -66,6 +78,11 @@ func (config *Config) GetInt64(path string, defaultval int64) int64 {
 	}
 
 	return int64(value)
+}
+
+// GetDuration fetch config value as time.Duration
+func (config *Config) GetDuration(path string, defaultval time.Duration) time.Duration {
+	return time.Duration(config.GetInt64(path, int64(defaultval)))
 }
 
 // GetString get config value as Int
@@ -117,6 +134,11 @@ func Has(path string) bool {
 // GetInt64 get config value as Int
 func GetInt64(path string, defaultval int64) int64 {
 	return config.GetInt64(path, defaultval)
+}
+
+// GetDuration get config value as Int
+func GetDuration(path string, defaultval time.Duration) time.Duration {
+	return config.GetDuration(path, defaultval)
 }
 
 // GetString get config value as String
