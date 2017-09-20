@@ -103,6 +103,9 @@ func (config *Config) Has(path string) bool {
 
 var config = &Config{}
 
+// GlobalConfig global builtin config
+var GlobalConfig = config
+
 // Load load config from source bytes
 func Load(source []byte) {
 	config.Reload(source)
