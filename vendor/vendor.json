@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "8G3MdcWpgaVSwl1Yh/n6yJo3w5o=",
+			"path": "github.com/Jeffail/gabs",
+			"revision": "9cef256b595a9e616eb6aec1da446529b7705613",
+			"revisionTime": "2017-06-07T19:55:31Z"
+		}
+	],
+	"rootPath": "github.com/dynamicgo/config"
+}
