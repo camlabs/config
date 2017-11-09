@@ -101,6 +101,11 @@ func (config *Config) Has(path string) bool {
 	return config.container.ExistsP(path)
 }
 
+// String print config as string
+func (config *Config) String() string {
+	return config.container.String()
+}
+
 var config = &Config{}
 
 // GlobalConfig global builtin config
