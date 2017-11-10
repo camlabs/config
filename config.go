@@ -78,10 +78,9 @@ func (config *Config) GetObject(path string, v interface{}) error {
 }
 
 func (config *Config) tryGet(path string) (Value, bool) {
-	data := config.container.Path(path)
 
-	if data != nil {
-		return data.Data(), true
+	if config.Has(path) {
+		return config.container.Path(path).Data(), true
 	}
 
 	return nil, false
